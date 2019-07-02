@@ -1,1 +1,0 @@
-# app-academy-exercise
