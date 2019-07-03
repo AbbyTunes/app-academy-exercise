@@ -7,48 +7,48 @@ class GraphNode
     @neighbors = []
   end
 
-  def add_neighbor(*nodes)
+  def neighbor=(*nodes)
     nodes.each { |node| @neighbors << node }
+    # @neighbors += nodes
   end
 
-  def bfs(starting_node, target_value)
+end
+
+def bfs(starting_node, target_value)
   queue = [starting_node]
   visited = []
 
   until queue.empty?
-    node = queue.shift # first out
+    node = queue.shift  # first out
     unless visited.include?(node)
       return node.value if node.value == target_value
-      visited.push(node) # last in
+      visited.push(node)  # last in
       queue += node.neighbors
     end
   end
-  
   return nil
 end
 
-end
+a = GraphNode.new('a')
+b = GraphNode.new('b')
+c = GraphNode.new('c')
+d = GraphNode.new('d')
+e = GraphNode.new('e')
+f = GraphNode.new('f')
 
-p a = GraphNode.new('a')
-p b = GraphNode.new('b')
-p c = GraphNode.new('c')
-p d = GraphNode.new('d')
-p e = GraphNode.new('e')
-p f = GraphNode.new('f')
+# a.add_neighbor([b, c, e])
+# c.add_neighbor([b, d])
+# e.add_neighbor([a])
+# f.add_neighbor([e])
 
-a.add_neighbor([b, c, e])
-c.add_neighbor([b, d])
-e.add_neighbor([a])
-f.add_neighbor([e])
-
-# a.neighbors = [b, c, e]
-# c.neighbors = [b, d]
-# e.neighbors = [a]
-# f.neighbors = [e]
+a.neighbors = [b, c, e]
+c.neighbors = [b, d]
+e.neighbors = [a]
+f.neighbors = [e]
 
 
-p a.bfs(a, "c")
-p a.bfs(a, "b")
-p a.bfs(a, "f")
+p bfs(a, "c")
+p bfs(a, "b")
+p bfs(a, "f")
 
 
