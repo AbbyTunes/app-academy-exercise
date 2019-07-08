@@ -1,8 +1,10 @@
 require_relative 'hand.rb'
 
 class Player
-  attr_reader :bankroll, :hand, :last_bet
+  attr_reader :bankroll, :hand, :current_bet # :deck
   # need to have variable getter
+
+  attr_accessor :folded
 
   # include Comparable
 
@@ -13,7 +15,8 @@ class Player
   def initialize(bankroll)
     @bankroll = bankroll
     # @hand = Hand.new # call in Deck class
-    @last_bet = 0
+    @current_bet = 0
+    @folded = false
   end
 
   def deal_in(hand)
@@ -21,14 +24,16 @@ class Player
   end
 
   def take_bet(new_bet)
-    current_bet = @last_bet == 0 ? new_bet : new_bet - @last_bet
+    # WRONG
+    # current_bet = @last_bet == 0 ? new_bet : new_bet - @last_bet
     # this if else statement essentially works the same
-
     # current_bet = new_bet - @last_bet
 
-    raise 'not enough money' if current_bet > @bankroll
-    @bankroll -= current_bet
-    current_bet
+    raised_money = new_bet - @current_bet
+    raise 'not enough money' if raised_money > @bankroll
+    @bankroll -= raised_money
+        
+    @current_bet = new_bet # @current_bet += raised_money
   end
 
   # def bet_money #amt
@@ -44,41 +49,35 @@ class Player
   end
 
   def return_cards
-    # @
+    returning_cards = @hand.cards # store the cards to a variable
+    @hand = nil
+    returning_cards # return this result to this method
+  end
+
+  def fold
+    @folded = true
+  end
+
+  def unfold
+    @folded = false
+  end
+
+  def folded?
+    @folded
   end
 
   # def respond_bet
-
   # end
 
   # def get_bet
-
   # end
 
   # def get_cards_to_trade
 
   # def reset_current_bet
-
-  # end
-
-  # def fold
-  #   folded = true
-  # end
-
-  # def unfold
-  #   folded = false
-  # end
-
-  # def folded?
-  #   # if fold == true
-  # end
-
-  # def trade_cards(old_cards, new_cards)
-
   # end
 
   # def <=>(other_player)
   #   # hand <=> other_player.hand
   # end
-
 end

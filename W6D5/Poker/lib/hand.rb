@@ -4,8 +4,8 @@ class Hand
 
   include PokerHands
 
-  #expect(hand.cards).to match_array(cards)
   attr_reader :cards 
+  #expect(hand.cards).to match_array(cards)
 
   def self.winner(hands)
     # return rank_set with the highest ranking
@@ -72,8 +72,14 @@ class Hand
   end
 
   def discard_cards(old_cards)
+
     @cards -= old_cards
-    # @cards.delete(old_cards)
+    
+    # old_cards.each do |card|
+    #   @cards.delete(card)
+    # end    
+
+    # @cards.delete(old_cards) # cannot delete an array
   end
 
   def has_cards?(chosen_cards)
