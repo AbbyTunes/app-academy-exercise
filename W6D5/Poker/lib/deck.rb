@@ -5,10 +5,10 @@ class Deck
 
   def self.all_cards
     deck = []
-    Card::SUIT_STRINGS.keys.each do |suit|
-      Card::VALUE_STRINGS.keys.each do |value|
-    # Card.suits.each do |suit|
-    #   Card.values.each do |value|
+    # Card::SUIT_STRINGS.keys.each do |suit|
+    #   Card::VALUE_STRINGS.keys.each do |value|
+    Card.suits.each do |suit|
+      Card.values.each do |value|
         deck << Card.new(suit, value)
       end
     end
@@ -19,14 +19,8 @@ class Deck
     @cards = cards
   end
 
-  def deal_hand
-    # first_five = @cards.take(5) # the first five cards
-    # first_five = @cards[0..4]
-    Hand.new(@cards.take(5))  # need to have Hand class to pass the test
-  end
-
   def take(n)
-    raise "not enough cards" if n > @cards.count
+    raise "not enough cards" if n > self.count
     @cards.shift(n) # take from the front
   end
 
@@ -35,12 +29,23 @@ class Deck
   end
 
   def return(cards)
-    # @cards += cards #don't use shovel and flatten
-    @cards.push(*cards) # either way
+    # @cards += cards 
+    @cards.concat(cards)
+    # @cards.push(*cards)
   end
 
   def shuffle
     @cards.shuffle!
+  end
+
+  def deal_hand # use the cards to make a hand
+
+    # first_five = @cards[0..4] # the first five cards from deck itself
+    # first_five = self.take(5) # an instance method
+    # Hand.new(first_five)
+
+    Hand.new(self.take(5)) # not @cards.take(5) 
+    # need to have Hand class to pass the test
   end
   
 end

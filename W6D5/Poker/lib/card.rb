@@ -40,6 +40,13 @@ class Card
     :ace   => 14,
   }
 
+    SUIT_VALUE = {
+    :clubs    => 1,
+    :diamonds => 2,
+    :hearts   => 3,
+    :spades   => 4
+  }
+
   def self.suits
     SUIT_STRINGS.keys
   end
@@ -55,7 +62,8 @@ class Card
   attr_reader :suit, :value
 
   def initialize(suit, value)
-    if !SUIT_STRINGS.keys.include?(suit) || !POKER_VALUE.keys.include?(value)
+    # if !Card.suits.include?(suit) || !Card.values.include?(value)
+    unless Card.suits.include?(suit) && Card.values.include?(value)
       raise "the suit #{suit} or value #{value} is invalid"
     end
     @suit = suit
@@ -70,26 +78,36 @@ class Card
     @suit == other_card.suit && @value == other_card.value
   end
 
-  def <=>(other_card)
-    if self == other_card
-      0
-    elsif value != other_card.value
+  def <=>(other_card) # beats
+
+    # return 0 if self == other_card 
+    # included in situation 2
+
+    if self.value != other_card.value 
+      # they are not equal, won't have situation 0
+      # && suit != other_card.suit #situation 0
       POKER_VALUE[value] <=> POKER_VALUE[other_card.value]
-    elsif value == other_card.value
-      # different ways to call the suits 
-      Card.suits.index(suit) <=> Card::SUIT_STRINGS.keys.index(other_card.suit)
+    
+    else #self.value == other_card.value
+      Card::SUIT_VALUE[suit] <=> Card::SUIT_VALUE[other_card.suit]
     end
+
+    # if, else, no need to #return
+    # if, end  if, end  need to # return
   end
 
-    # elsif ( <=> POKER_VALUE[other_card.value]) == 1
-    #   1
-    # elsif (POKER_VALUE[self.value] <=> ) == -1
-    #   -1
-    # else 
-    #   if (self.suit <=> other_card.suit) == 1
-    #     1
-    #   elsif (self.suit <=> other_card.suit) == -1
-    #     -1
-    #   end
-    # end
 end
+
+# SOLUTION
+  # def <=>(other_card) # beats
+  #   if self == other_card
+  #     0
+  #   elsif value != other_card.value
+  #     POKER_VALUE[value] <=> POKER_VALUE[other_card.value]
+  #   elsif value == other_card.value
+  #     # different ways to call the suits 
+  #     # found keys, then found index in keys array
+  #     Card.suits.index(suit) <=> Card::SUIT_STRINGS.keys.index(other_card.suit)
+  #   end
+  # end
+
