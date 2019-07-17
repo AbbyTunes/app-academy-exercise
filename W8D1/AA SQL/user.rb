@@ -67,6 +67,10 @@ class User
     def authored_replies
         Reply.find_by_user_id(self.id)
     end
+
+    def liked_questions
+        Question_like.liked_questions_for_user_id(id)
+    end
 end
 
 # abby_ins = User.find_by_last_name('Xu')

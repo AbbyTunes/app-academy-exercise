@@ -28,6 +28,8 @@ class Question_follow
         Question_follow.new(ins.first)
     end
 
+    # MEDIUM
+
     # def self.followers_for_question_id(question_id)
     #     ins = QuestionsDatabase.instance.execute(<<-SQL, question_id)
     #         SELECT
@@ -52,7 +54,7 @@ class Question_follow
     # end
 
     def self.followers_for_question_id(question_id)
-        ins = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+        hash = QuestionsDatabase.instance.execute(<<-SQL, question_id)
             SELECT 
                 *
             FROM
@@ -62,7 +64,7 @@ class Question_follow
             WHERE
                 question_follows.question_id = ?
         SQL
-        ins.map { |user| User.new(user) }
+        hash.map { |user| User.new(user) }
     end
 
     # def self.followed_questions_for_user_id(user_id)
@@ -87,7 +89,7 @@ class Question_follow
     # end
 
     def self.followed_questions_for_user_id(user_id)
-        ins = QuestionsDatabase.instance.execute(<<-SQL, user_id)
+        hash = QuestionsDatabase.instance.execute(<<-SQL, user_id)
             SELECT 
                 *
             FROM
@@ -96,7 +98,26 @@ class Question_follow
             JOIN users ON users.id = question_follows.user_id
             WHERE question_follows.user_id = ?
         SQL
-        ins.map { |question| Question.new(question) }
+        hash.map { |question| Question.new(question) }
+    end
+
+    # HARD
+
+    def self.most_followed_questions(n)
+        hash = QuestionsDatabase.instance.execute(<<-SQL, n)
+            SELECT
+                *
+            FROM
+                questions
+            JOIN question_follows ON questions.id = question_follows.question_id
+            GROUP BY 
+                questions.id
+            ORDER BY
+                COUNT(question_follows.user_id) DESC
+            LIMIT
+                ?
+        SQL
+        hash.map { |question| Question.new(question) }
     end
 
     def initialize(options)
