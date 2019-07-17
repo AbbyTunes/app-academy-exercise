@@ -59,4 +59,8 @@ class Question
     def replies
         Reply.find_by_question_id(self.id)
     end
+
+    def followers
+        Question_follow.followers_for_question_id(id)
+    end
 end
