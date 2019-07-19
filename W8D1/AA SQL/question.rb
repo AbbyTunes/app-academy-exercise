@@ -6,27 +6,27 @@ require_relative "reply.rb"
 require_relative "question_follow.rb"
 require_relative "question_like.rb"
 
-class Question
+class Question < ModelBase
 
     attr_accessor :id, :title, :question_body, :user_id
 
-    def self.all
-        ins = QuestionsDatabase.instance.execute('SELECT * FROM questions')
-        ins.map { |data| Question.new(data) }
-    end
+    # def self.all
+    #     ins = QuestionsDatabase.instance.execute('SELECT * FROM questions')
+    #     ins.map { |data| Question.new(data) }
+    # end
 
-    def self.find_by_id(id)
-        ins = QuestionsDatabase.instance.execute(<<-SQL, id)
-            SELECT
-                *
-            FROM
-                questions
-            WHERE
-                id = ?
-        SQL
-        return nil if ins.length < 1
-        Question.new(ins.first)
-    end
+    # def self.find_by_id(id)
+    #     ins = QuestionsDatabase.instance.execute(<<-SQL, id)
+    #         SELECT
+    #             *
+    #         FROM
+    #             questions
+    #         WHERE
+    #             id = ?
+    #     SQL
+    #     return nil if ins.length < 1
+    #     Question.new(ins.first)
+    # end
 
     # always return an array of hashes
     # use .first to return the first element
@@ -73,5 +73,9 @@ class Question
 
     def num_likes
         Question_like.num_likes_for_question_id(id)
+    end
+
+    def most_liked(n)
+        Question_like.most_liked_questions(n)
     end
 end

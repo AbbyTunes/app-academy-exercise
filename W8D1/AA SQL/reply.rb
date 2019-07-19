@@ -6,26 +6,27 @@ require_relative "reply.rb"
 require_relative "question_follow.rb"
 require_relative "question_like.rb"
 
-class Reply
+class Reply < ModelBase
+
     attr_accessor :id, :user_id, :question_id, :reply_id, :reply_body
 
-    def self.all
-        ins = QuestionsDatabase.instance.execute('SELECT * FROM replies')
-        ins.map { |data| Reply.new(data) }
-    end
+    # def self.all
+    #     ins = QuestionsDatabase.instance.execute('SELECT * FROM replies')
+    #     ins.map { |data| Reply.new(data) }
+    # end
 
-    def self.find_by_id(id)
-        ins = QuestionsDatabase.instance.execute(<<-SQL, id)
-            SELECT
-                *
-            FROM
-                replies
-            WHERE
-                id = ?
-        SQL
-        return nil if ins.length < 1
-        Reply.new(ins.first)
-    end
+    # def self.find_by_id(id)
+    #     ins = QuestionsDatabase.instance.execute(<<-SQL, id)
+    #         SELECT
+    #             *
+    #         FROM
+    #             replies
+    #         WHERE
+    #             id = ?
+    #     SQL
+    #     return nil if ins.length < 1
+    #     Reply.new(ins.first)
+    # end
 
     def self.find_by_user_id(user_id)
         ins = QuestionsDatabase.instance.execute(<<-SQL, user_id)
