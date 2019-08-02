@@ -1,0 +1,30 @@
+/* PHASE 2: Notifications */
+.badge {
+  
+}
+
+.header-list {
+  position: relative;
+}
+
+li:hover .badge {
+  /* float:right;  */
+  position: relative;
+  padding: 10px;
+  margin: 1px;
+  border-radius: 100px;
+  background-color: grey;
+  white-space: nowrap;
+  display: block;
+}
+
+.notifications {
+    display: none;
+    position: relative;
+}
+
+li:hover .notifications {                
+  display: block;
+  font-color: black;
+}
+
