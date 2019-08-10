@@ -1,0 +1,23 @@
+/* PHASE 7: Online */
+
+.profile-picture {
+    overflow: hidden;
+}
+
+
+
+.online {
+    display: inline;
+    position: absolute;
+    box-shadow: 3px 3px 2px 2px grey;
+    background-color: aquamarine; 
+    transform: rotate(-0.11turn);
+    padding: 5px 50px;
+    top: 20px;
+    left: -30px;
+    color: black;
+    font-weight: bold;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/overflow */
+
