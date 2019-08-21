@@ -3,14 +3,17 @@ class SessionsController < ApplicationController
 
     # Unfinished
 
-    def new
-        render plain: "SessionsController: New"
-        # render :new
+    def new # login page
+        # render plain: "SessionsController: New"
+        render :new
     end
 
-    def create
-        render plain: "SessionsController: Create"
-        @user = User.find_by_credentials()
+    def create # log you in
+        # render plain: "SessionsController: Create"
+
+        @user = User.find_by_credentials(
+            params[:user][:email], params[:user][:password]
+        )
         if @user
             login(@user)
             render json: @user
@@ -19,8 +22,9 @@ class SessionsController < ApplicationController
         end
     end
 
-    def destroy
-        render plain: "SessionsController: Destroy"
+    def destroy # log out
+        # render plain: "SessionsController: Destroy"
+
         logout
         render json: "logged out successfully", status: 200
     end

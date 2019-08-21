@@ -1,17 +1,33 @@
-Array.prototype.myEach = function(callback) {
+
+Array.prototype.myEach = function (callback) {
   for(let i = 0; i < this.length; i++) {
     callback(this[i]);
   }
 }
 
+var arr = [1,2,3,4]
+
 // const arr = [1, 2, 3]
-const callback = function (el) { console.log(el * 2);};
+const callback = function (el) {
+  console.log(el * 2);
+};
+
+function callback_static(el) {
+  console.log(el * 2);
+};
+
+const callback_lambda = (el) => {
+  console.log(el * 2);
+}
+
 arr.myEach(callback);
 
+arr.myEach(callback_lambda);
+
+// Never name it, defined inline;
 // arr.myEach((el) => {
 //   console.log(el * 2);
 // });
-
 arr.myEach((num) => {
   console.log(`square of ${num} is ${num * num}`);
 });
@@ -32,6 +48,8 @@ Array.prototype.myMap = function(cb) {
 var arr = [1, 2, 3]
 var new_arr = console.log(arr.myMap( el => `this is our el: ${el}` ));
 
+
+
 // console.log(NUMS.myMap(num => num * num)); # syntax sugar?
 
 // arr.myMap ( (el) => {
@@ -42,6 +60,7 @@ var new_arr = console.log(arr.myMap( el => `this is our el: ${el}` ));
 // const callback_2 = function (el) { console.log(`This is our element: ${el}`); };
 // arr.myMap(callback_2);
 
+// map reducing computer science 
 Array.prototype.myReduce = function (cb, initialValue) {
     let dup = this 
     

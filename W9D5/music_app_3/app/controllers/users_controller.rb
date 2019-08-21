@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
 
     def new
-        render plain: "UsersController: New"
+        @user = User.new
+        render :new
+        # render plain: "UsersController: New"
     end
 
     def create
         user = User.new(user_params)
-        render plain: "UsersController: New"
+        # render plain: "UsersController: New"
+
         if user.save
-            render plain: "#login(user)"
+            # msg = UserMailer.welcome_email(u)
+            # msg .deliver_now
+            
+            login(user)
             render json: user
         else
-            render json: "User not found", status: 401
+            render user.errors.full_message, status: 401
         end
     end
 
@@ -21,7 +27,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :email) 
-        #password? #password_digest?
+        params.require(:user).permit(:id, :email, :password_digest) 
     end
 end

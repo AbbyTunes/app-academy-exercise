@@ -65,8 +65,8 @@ Function.prototype.inherits = function (parent) {
   this.prototype = myNewPrototype;
   // fix constructor
   this.prototype.constructor = this;
-
 }
+
 FlyingSaucer.inherits(Mothership);
 flyingSaucer = new FlyingSaucer();
 Mothership.call(flyingSaucer);

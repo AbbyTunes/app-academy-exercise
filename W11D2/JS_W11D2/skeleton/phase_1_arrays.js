@@ -1,3 +1,4 @@
+
 Array.prototype.uniq = function() {
     let uniqueArray = [];
 
@@ -27,21 +28,37 @@ console.log(arr.uniq());
 // arr = [1, 1, 2, 2, 3, 4, 5, 5];
 // arr.uniq();
 
-Array.prototype.twoSum = function() {
-    let sumArray = [];
+// Array.prototype.twoSum = function() {
+//     let sumArray = [];
 
-    let i = 0;
-    while (i < this.length) {
-      let j = i + 1;
-      while (j < this.length) {
-        if (this[i] + this[j] === 0) {
-          sumArray.push([this[i], this[j]]);
-        }
-        j++;
+//     let i = 0;
+//     while (i < this.length) {
+//       let j = i + 1;
+//       while (j < this.length) {
+//         if (this[i] + this[j] === 0) {
+//           sumArray.push([this[i], this[j]]);
+//         }
+//         j++;
+//       }
+//       i++;
+//     }
+//     return sumArray;
+// }
+
+arr = [1, -1, -4, 4, 3, 5, -3];
+console.log(arr.twoSum());
+
+
+Array.prototype.twoSum = function () {
+  let sumArray = [];
+  for (i = 0; i < this.length; i++) {
+    for (j = i + 1; j < this.length; j++) {
+      if (this[i] + this[j] === 0) {
+        sumArray.push( [ this[i], this[j] ] );
       }
-      i++;
     }
-    return sumArray;
+  }
+  return sumArray;
 }
 
 arr = [1, -1, -4, 4, 3, 5, -3];

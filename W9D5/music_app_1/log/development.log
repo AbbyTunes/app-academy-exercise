@@ -1,0 +1,187 @@
+  [1m[35m (1057.5ms)[0m  [1m[35mCREATE DATABASE "music_app_1_development" ENCODING = 'unicode'[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (819.9ms)[0m  [1m[35mCREATE DATABASE "music_app_1_test" ENCODING = 'unicode'[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (92.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (80.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(133726100223172800)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateBands (20190727235649)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (88.1ms)[0m  [1m[35mCREATE TABLE "bands" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190727235649_create_bands.rb:3
+  [1m[35m (18.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_bands_on_name" ON "bands"  ("name")[0m
+  ↳ db/migrate/20190727235649_create_bands.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190727235649"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (103.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateAlbums (20190727235700)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (49.5ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "name" character varying NOT NULL, "year" integer NOT NULL, "live" boolean DEFAULT FALSE NOT NULL, "band_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190727235700_create_albums.rb:3
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(133726100223172800)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(133726100223172800)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateAlbums (20190727235700)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (57.1ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "name" character varying NOT NULL, "year" integer NOT NULL, "live" boolean DEFAULT FALSE NOT NULL, "band_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190727235700_create_albums.rb:3
+  [1m[35m (24.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_albums_on_band_id_and_name" ON "albums"  ("band_id", "name")[0m
+  ↳ db/migrate/20190727235700_create_albums.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190727235700"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateTracks (20190727235706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (43.7ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "name" character varying NOT NULL, "ord" integer NOT NULL, "album_id" integer NOT NULL, "lyrics" text, "bonus" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190727235706_create_tracks.rb:3
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_tracks_on_album_id_and_ord" ON "tracks"  ("album_id", "ord")[0m
+  ↳ db/migrate/20190727235706_create_tracks.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190727235706"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateUsers (20190727235841)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (43.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190727235841_create_users.rb:3
+  [1m[35m (119.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190727235841_create_users.rb:10
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20190727235841_create_users.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190727235841"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-28 00:26:10.526990"], ["updated_at", "2019-07-28 00:26:10.526990"]]
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (28.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(133726100223172800)[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/annotate-2.7.5/lib/annotate/annotate_models.rb:779
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user_1@gmail.com"], ["password_digest", "banana_1"], ["session_token", "1_banana"], ["created_at", "2019-07-28 00:55:05.808707"], ["updated_at", "2019-07-28 00:55:05.808707"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (16.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user_2@gmail.com"], ["password_digest", "banana_2"], ["session_token", "2_banana"], ["created_at", "2019-07-28 00:55:05.828641"], ["updated_at", "2019-07-28 00:55:05.828641"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mBand Create (1.6ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "band_1"], ["created_at", "2019-07-28 00:55:05.853750"], ["updated_at", "2019-07-28 00:55:05.853750"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (13.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mBand Create (0.9ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "band_2"], ["created_at", "2019-07-28 00:55:05.873127"], ["updated_at", "2019-07-28 00:55:05.873127"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mBand Create (0.9ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "band_3"], ["created_at", "2019-07-28 00:55:05.884237"], ["updated_at", "2019-07-28 00:55:05.884237"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mBand Create (0.9ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "band_4"], ["created_at", "2019-07-28 00:55:05.895571"], ["updated_at", "2019-07-28 00:55:05.895571"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mBand Create (0.9ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "band_5"], ["created_at", "2019-07-28 00:55:05.906906"], ["updated_at", "2019-07-28 00:55:05.906906"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mAlbum Create (0.7ms)[0m  [1m[32mINSERT INTO "albums" ("name", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "album_1"], ["year", 2001], ["band_id", 2], ["created_at", "2019-07-28 00:55:05.928353"], ["updated_at", "2019-07-28 00:55:05.928353"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mAlbum Create (0.3ms)[0m  [1m[32mINSERT INTO "albums" ("name", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "album_2"], ["year", 2002], ["band_id", 3], ["created_at", "2019-07-28 00:55:05.938752"], ["updated_at", "2019-07-28 00:55:05.938752"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mAlbum Create (1.0ms)[0m  [1m[32mINSERT INTO "albums" ("name", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "album_3"], ["year", 2003], ["band_id", 1], ["created_at", "2019-07-28 00:55:05.951722"], ["updated_at", "2019-07-28 00:55:05.951722"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mAlbum Create (0.8ms)[0m  [1m[32mINSERT INTO "albums" ("name", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "album_4"], ["year", 2004], ["band_id", 4], ["created_at", "2019-07-28 00:55:05.962463"], ["updated_at", "2019-07-28 00:55:05.962463"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mAlbum Create (0.9ms)[0m  [1m[32mINSERT INTO "albums" ("name", "year", "band_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "album_4"], ["year", 2005], ["band_id", 5], ["created_at", "2019-07-28 00:55:05.973737"], ["updated_at", "2019-07-28 00:55:05.973737"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mAlbum Load (1.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[36mTrack Load (1.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/annotate-2.7.5/lib/annotate/annotate_models.rb:779

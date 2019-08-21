@@ -53,6 +53,7 @@ def area_count
   WHERE
     area > 1000000;
   SQL
+  # count how many rows
 end
 
 def group_population
