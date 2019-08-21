@@ -1,0 +1,40 @@
+ul {
+
+}
+
+div {
+  display: flex;
+  
+}
+
+li {
+
+}
+
+.tile {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    border: 1px solid white;
+    /* border-style: inset; 
+    border-style: outset; */
+    
+    list-style-type: none
+}
+
+.tile:hover{
+    background-color: gray;
+}
+
+.flag{
+    background-color: grey;
+}
+
+.bomb{
+    background-color: black;
+}
+
+
+.explore{
+    background-color: white;    
+}
