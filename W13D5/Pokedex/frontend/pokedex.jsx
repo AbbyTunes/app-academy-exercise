@@ -5,7 +5,7 @@ import configureStore from './store/store';
 import Root from './root'
 
 import { receiveAllPokemon } from './actions/pokemon_actions'
-import { fetchAllPokemon } from './until/api_util'
+import { fetchAllPokemon } from './util/api_util'
 import { requestAllPokemon } from './actions/pokemon_actions'
 import { selectAllPokemon } from './reducers/selectors'
 
