@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BenchBnB</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgPMOh5z5sU8YLgkrxT1EK9hWZBGa325A"></script>
+    
+    <%= javascript_include_tag 'application' %>
+    
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
