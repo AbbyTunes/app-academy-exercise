@@ -1,0 +1,25 @@
+{
+  "name": "dog-toy-demo",
+  "version": "1.0.0",
+  "description": "Dog Toy Demo for Apollo",
+  "main": "index.js",
+  "scripts": {
+	"dev": "nodemon index.js --ignore client"
+  },
+  "author": "Rose Koron",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "mongoose": "^5.4.13",
+    "nodemon": "^1.18.10",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2"
+  }
+}
