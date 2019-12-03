@@ -173,20 +173,35 @@ class LinkedList {
 
     // TODO: Implement the insert method here
     insert(index, val) {
-		let current = this.get(index);
-		if (!current) return false;
-
+		
+		if (index < 0 || index >= this.length) return false;
+		// why index = this.length return false?
+		if (index === 0) return !!this.addToHead(val);
+		if (index === this.length) return !!this.addToTail(val);
+		
 		let newNode = new Node(val);
-		let previousNode = current.previous;
+		let previousNode = this.get(index - 1);
+		let current = previousNode.next;
 		previousNode.next = newNode;
 		newNode.next = current;
+		// singly linked, not previous
+		// let current = this.get(index);
+		// let previousNode = current.previous;
+		// previousNode.next = newNode;
+		// newNode.next = current;
 		this.length++;
 		return true;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
-
+		if (index < 0 || index >= this.length || !this.length) return undefined;
+		let previousNode = this.get(index - 1);
+		let current = previousNode.next;
+		let nextNode = current.next;
+		previousNode.next = nextNode;
+		this.length--;
+		return current;
     }
 
     // TODO: Implement the size method here
