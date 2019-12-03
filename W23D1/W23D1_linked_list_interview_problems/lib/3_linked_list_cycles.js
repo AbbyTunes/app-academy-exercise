@@ -60,10 +60,8 @@
 // Let's code!
 // -----------
 function hasCycle(linkedList) {
-  if (linkedList.tail.next === null) {
-    return false;
-  }
-  return true;
+  // TODO: Implement the hasCycle function!
+
 }
 
 
